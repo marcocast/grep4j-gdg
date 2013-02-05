@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-@Test
+@Test(enabled = false)
 public class SmokeTestRemoteDistribution {
 
 	@BeforeTest
