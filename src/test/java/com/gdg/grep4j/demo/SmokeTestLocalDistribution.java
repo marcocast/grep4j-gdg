@@ -16,11 +16,6 @@ public class SmokeTestLocalDistribution {
 	@BeforeTest
 	public void triggerMessageDispatcher() {
 		System.out.println("Producing and firing a CREATE message to downstream systems with message id 980238924");
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void testLocalProducerMessageDispatch() {
