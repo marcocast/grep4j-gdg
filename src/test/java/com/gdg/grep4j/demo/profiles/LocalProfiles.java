@@ -20,32 +20,32 @@ public class LocalProfiles {
 
 	private static Profile createEsbProfile() {
 		String resourcePath = LocalProfiles.class.getClassLoader().getResource("logs/esb/server.log").getPath();
-		return createProfile("producer", resourcePath);
+		return createProfile("esb", resourcePath);
 	}
 
 	private static Profile createConsumer1Profile() {
 		String resourcePath = LocalProfiles.class.getClassLoader().getResource("logs/consumer1/server.log").getPath();
-		return createProfile("producer", resourcePath);
+		return createProfile("consumer1", resourcePath);
 	}
 
 	private static Profile createConsumer2Profile() {
 		String resourcePath = LocalProfiles.class.getClassLoader().getResource("logs/consumer2/server.log").getPath();
-		return createProfile("producer", resourcePath);
+		return createProfile("consumer2", resourcePath);
 	}
 
 	private static Profile createConsumer3Profile() {
 		String resourcePath = LocalProfiles.class.getClassLoader().getResource("logs/consumer3/server.log").getPath();
-		return createProfile("producer", resourcePath);
+		return createProfile("consumer3", resourcePath);
 	}
 
 	private static Profile createConsumer4Profile() {
 		String resourcePath = LocalProfiles.class.getClassLoader().getResource("logs/consumer4/server.log").getPath();
-		return createProfile("producer", resourcePath);
+		return createProfile("consumer4", resourcePath);
 	}
 
 	private static Profile createConsumer5Profile() {
 		String resourcePath = LocalProfiles.class.getClassLoader().getResource("logs/consumer5/server.log").getPath();
-		return createProfile("producer", resourcePath);
+		return createProfile("consumer5", resourcePath);
 	}
 
 	private static Profile createProfile(String profileName, String resourcePath) {

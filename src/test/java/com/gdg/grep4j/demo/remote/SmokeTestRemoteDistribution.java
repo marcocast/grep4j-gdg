@@ -1,6 +1,6 @@
-package com.gdg.grep4j.demo;
+package com.gdg.grep4j.demo.remote;
 
-import static com.gdg.grep4j.demo.profiles.LocalProfiles.*;
+import static com.gdg.grep4j.demo.profiles.RemoteProfiles.*;
 import static org.grep4j.core.Grep4j.grep;
 import static org.grep4j.core.Grep4j.regularExpression;
 import static org.grep4j.core.fluent.Dictionary.on;
@@ -10,8 +10,8 @@ import static org.junit.Assert.assertThat;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-@Test
-public class SmokeTestLocalDistribution {
+@Test(enabled = false)
+public class SmokeTestRemoteDistribution {
 
 	@BeforeTest
 	public void triggerMessageDispatcher() {
