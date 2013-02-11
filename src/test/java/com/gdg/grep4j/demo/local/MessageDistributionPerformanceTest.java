@@ -26,8 +26,7 @@ import org.testng.annotations.Test;
 public class MessageDistributionPerformanceTest {
 
 	private static final Pattern timePattern = Pattern
-			.compile("([0-9][0-9]|2[0-3]):([0-9][0-9]):([0-9][0-9]),([0-9][0-9][0-9])");
-
+			.compile("([0-9][0-9][0-9][0-9])-([0-9][0-9])-([0-9][0-9]) ([0-9][0-9]|2[0-3]):([0-9][0-9]):([0-9][0-9]),([0-9][0-9][0-9])");
 
 	public void testLocalProducerMessageDispatch() {
 
@@ -48,34 +47,38 @@ public class MessageDistributionPerformanceTest {
 				consumer4).toString());
 		long consumer5Time = extractTime(consumersResult.filterOnProfile(
 				consumer5).toString());
-		
-		assertThat((consumer1Time - producerTime), is(132470l));
-		assertThat((consumer2Time - producerTime), is(12434l));
-		assertThat((consumer3Time - producerTime), is(12435l));
-		assertThat((consumer4Time - producerTime), is(132470l));
-		assertThat((consumer5Time - producerTime), is(12431l));
+
+		assertThat(latency(consumer1Time, producerTime), is(132470l));
+		assertThat(latency(consumer2Time, producerTime), is(12434l));
+		assertThat(latency(consumer3Time, producerTime), is(12435l));
+		assertThat(latency(consumer4Time, producerTime), is(132470l));
+		assertThat(latency(consumer5Time, producerTime), is(12431l));
 	}
 
-	private long extractTime(String text) {		
+	private Long latency(long consumer1Time, long producerTime) {
+		return consumer1Time - producerTime;
+	}
+
+	private long extractTime(String text) {
 		Matcher lm = timePattern.matcher(text);
-		if (lm.find()) {			
+		if (lm.find()) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,SSS");
-	        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+			sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-	        String inputString = lm.group();
+			String inputString = lm.group();
 
-	        Date date = null;
+			Date date = null;
 			try {
-				date = sdf.parse("1970-01-01 " + inputString);
+				date = sdf.parse(inputString);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-	        return date.getTime(); 
-	        
+			return date.getTime();
+
 		} else {
 			return 0;
 		}
-		 
+
 	}
 
 }
