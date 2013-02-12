@@ -1,11 +1,11 @@
-package com.gdg.grep4j.demo.local;
+package com.gdg.grep4j.demo.remote;
 
-import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer1;
-import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer2;
-import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer3;
-import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer4;
-import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer5;
-import static com.gdg.grep4j.demo.profiles.LocalProfiles.producer;
+import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer1;
+import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer2;
+import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer3;
+import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer4;
+import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer5;
+import static com.gdg.grep4j.demo.profiles.RemoteProfiles.producer;
 import static org.grep4j.core.Grep4j.grep;
 import static org.grep4j.core.Grep4j.regularExpression;
 import static org.grep4j.core.fluent.Dictionary.on;
@@ -28,7 +28,7 @@ public class MessageDistributionPerformanceTest {
 	private static final Pattern timePattern = Pattern
 			.compile("([0-9][0-9][0-9][0-9])-([0-9][0-9])-([0-9][0-9]) ([0-9][0-9]|2[0-3]):([0-9][0-9]):([0-9][0-9]),([0-9][0-9][0-9])");
 
-	public void testLocalProducerMessageDispatch() {
+	public void testRemoteProducerMessageDispatch() {
 
 		GrepResults producerResult = grep(
 				regularExpression("Sent(.*)980238924(.*)CREATE"), on(producer));
