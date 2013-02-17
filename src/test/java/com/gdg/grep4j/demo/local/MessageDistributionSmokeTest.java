@@ -7,9 +7,11 @@ import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer4;
 import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer5;
 import static com.gdg.grep4j.demo.profiles.LocalProfiles.esb;
 import static com.gdg.grep4j.demo.profiles.LocalProfiles.producer;
+import static org.grep4j.core.Grep4j.constantExpression;
 import static org.grep4j.core.Grep4j.grep;
 import static org.grep4j.core.Grep4j.regularExpression;
 import static org.grep4j.core.fluent.Dictionary.on;
+import static org.grep4j.core.fluent.Dictionary.executing;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -26,31 +28,35 @@ public class MessageDistributionSmokeTest {
 				.println("Producing and firing a CREATE message to downstream systems with message id 980238924");
 	}
 
-	public void testLocalProducerMessageDispatch() {
+	public void testProducerDispatchACREATEMessage() {
 
-		assertThat(grep(regularExpression("980238924(.*)CREATE"), on(producer))
-				.totalLines(), is(1));
+		assertThat(
+				executing(
+						grep(regularExpression("Sent(.*)980238924(.*)CREATE"),
+								on(producer))).totalLines(), is(1));
 
 	}
 
-	public void testLocalESBMessageDispatch() {
+	public void testESBReceiveAndDispatchACREATEMessage() {
 
 		GrepResults globalEsbResult = grep(
 				regularExpression("980238924(.*)CREATE"), on(esb));
 
-		assertThat(globalEsbResult.filterBy("Received").totalLines(), is(1));
+		assertThat(globalEsbResult.filterBy(constantExpression("Received"))
+				.totalLines(), is(1));
 
-		assertThat(globalEsbResult.filterBy("Sent").totalLines(), is(5));
+		assertThat(globalEsbResult.filterBy(constantExpression("Sent"))
+				.totalLines(), is(5));
 
 	}
 
-	public void testLocalConsumerMessageDispatch() {
+	public void testConsumersReceiveACREATEMessage() {
 
 		assertThat(
-				grep(
+				executing(grep(
 						regularExpression("Received(.*)980238924(.*)CREATE"),
 						on(consumer1, consumer2, consumer3, consumer4,
-								consumer5)).totalLines(), is(5));
+								consumer5)).totalLines()), is(5));
 
 	}
 

@@ -9,6 +9,7 @@ import static com.gdg.grep4j.demo.profiles.RemoteProfiles.esb;
 import static com.gdg.grep4j.demo.profiles.RemoteProfiles.producer;
 import static org.grep4j.core.Grep4j.grep;
 import static org.grep4j.core.Grep4j.regularExpression;
+import static org.grep4j.core.Grep4j.constantExpression;
 import static org.grep4j.core.fluent.Dictionary.on;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -38,9 +39,9 @@ public class MessageDistributionSmokeTest {
 		GrepResults globalEsbResult = grep(
 				regularExpression("980238924(.*)CREATE"), on(esb));
 
-		assertThat(globalEsbResult.filterBy("Received").totalLines(), is(1));
+		assertThat(globalEsbResult.filterBy(constantExpression("Received")).totalLines(), is(1));
 
-		assertThat(globalEsbResult.filterBy("Sent").totalLines(), is(5));
+		assertThat(globalEsbResult.filterBy(constantExpression("Sent")).totalLines(), is(5));
 
 	}
 
