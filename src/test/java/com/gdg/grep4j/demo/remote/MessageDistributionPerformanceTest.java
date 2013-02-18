@@ -72,7 +72,7 @@ public class MessageDistributionPerformanceTest {
 			return date.getTime();
 
 		} else {
-			return 0;
+			throw new IllegalArgumentException("timePattern not found");
 		}
 
 	}

@@ -33,5 +33,13 @@ public class CredentialLoader {
 	public String getTestEnvironmentPassword() {
 		return prop.getProperty("test-environment.password");
 	}
+	
+	public String getTestUrl() {
+		return prop.getProperty("test-environment.url");
+	}
+	
+	public int getTestPort() {
+		return Integer.valueOf(prop.getProperty("test-environment.port"));
+	}
 
 }

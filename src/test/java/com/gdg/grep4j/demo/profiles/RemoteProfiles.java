@@ -6,8 +6,14 @@ import com.gdg.grep4j.demo.profiles.CredentialLoader;
 
 public class RemoteProfiles {
 
-	private static final String USER = CredentialLoader.getInstance().getTestEnvironmentUser();
-	private static final String PASSWORD = CredentialLoader.getInstance().getTestEnvironmentPassword();
+	private static final String URL = CredentialLoader.getInstance()
+			.getTestUrl();
+	private static final int PORT = CredentialLoader.getInstance()
+			.getTestPort();
+	private static final String USER = CredentialLoader.getInstance()
+			.getTestEnvironmentUser();
+	private static final String PASSWORD = CredentialLoader.getInstance()
+			.getTestEnvironmentPassword();
 
 	public static final Profile producer = createProducerProfile();
 	public static final Profile esb = createEsbProfile();
@@ -18,44 +24,50 @@ public class RemoteProfiles {
 	public static final Profile consumer5 = createConsumer5Profile();
 
 	private static Profile createProducerProfile() {
-		String resourcePath = "";
-		return createProfile("producer", resourcePath, "URL");
+		return createProfile("producer", "/home/grep4j/demo/resources/producer/server.log", URL);
 	}
 
 	private static Profile createEsbProfile() {
-		String resourcePath = RemoteProfiles.class.getClassLoader().getResource("esb/server.log").getPath();
-		return createProfile("producer", resourcePath, "URL");
+
+		return createProfile("esb",
+				"/home/grep4j/demo/resources/esb/server.log", URL);
 	}
 
 	private static Profile createConsumer1Profile() {
-		String resourcePath = RemoteProfiles.class.getClassLoader().getResource("consumer1/server.log").getPath();
-		return createProfile("producer", resourcePath, "URL");
+
+		return createProfile("consumer1",
+				"/home/grep4j/demo/resources/consumer1/server.log", URL);
 	}
 
 	private static Profile createConsumer2Profile() {
-		String resourcePath = RemoteProfiles.class.getClassLoader().getResource("consumer2/server.log").getPath();
-		return createProfile("producer", resourcePath, "URL");
+
+		return createProfile("consumer2",
+				"/home/grep4j/demo/resources/consumer2/server.log", URL);
 	}
 
 	private static Profile createConsumer3Profile() {
-		String resourcePath = RemoteProfiles.class.getClassLoader().getResource("consumer3/server.log").getPath();
-		return createProfile("producer", resourcePath, "URL");
+
+		return createProfile("consumer3",
+				"/home/grep4j/demo/resources/consumer3/server.log", URL);
 	}
 
 	private static Profile createConsumer4Profile() {
-		String resourcePath = RemoteProfiles.class.getClassLoader().getResource("consumer4/server.log").getPath();
-		return createProfile("producer", resourcePath, "URL");
+
+		return createProfile("consumer4",
+				"/home/grep4j/demo/resources/consumer4/server.log", URL);
 	}
 
 	private static Profile createConsumer5Profile() {
-		String resourcePath = RemoteProfiles.class.getClassLoader().getResource("consumer5/server.log").getPath();
-		return createProfile("producer", resourcePath, "URL");
+
+		return createProfile("consumer5",
+				"/home/grep4j/demo/resources/consumer5/server.log", URL);
 	}
 
-	private static Profile createProfile(String profileName, String resourcePath, String url) {
+	private static Profile createProfile(String profileName,
+			String resourcePath, String url) {
 		return ProfileBuilder.newBuilder().name(profileName)
 				.filePath(resourcePath).onRemotehost(url)
-				.credentials(USER, PASSWORD).build();
+				.credentials(USER, PASSWORD).sshPort(PORT).build();
 	}
 
 }
