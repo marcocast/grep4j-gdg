@@ -20,7 +20,7 @@ import org.grep4j.core.result.GrepResults;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-@Test
+@Test(enabled = false)
 public class MessageDistributionPerformanceTest {
 
 	private static final long MAX_ACCETABLE_LATENCY = 500l;

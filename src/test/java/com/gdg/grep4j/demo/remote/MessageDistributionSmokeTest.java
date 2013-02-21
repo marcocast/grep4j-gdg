@@ -19,7 +19,7 @@ import org.grep4j.core.result.GrepResults;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-@Test
+@Test(enabled = false)
 public class MessageDistributionSmokeTest {
 
 	@BeforeTest
