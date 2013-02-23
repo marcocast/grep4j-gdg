@@ -41,5 +41,21 @@ public class CredentialLoader {
 	public int getTestPort() {
 		return Integer.valueOf(prop.getProperty("test-environment.port"));
 	}
+	
+	public String getVirtualTestEnvironmentUser() {
+		return prop.getProperty("virtual-test-environment.user");
+	}
+
+	public String getVirtualTestEnvironmentPassword() {
+		return prop.getProperty("virtual-test-environment.password");
+	}
+	
+	public String getVirtualTestUrl() {
+		return prop.getProperty("virtual-test-environment.url");
+	}
+	
+	public int getVirtualTestPort() {
+		return Integer.valueOf(prop.getProperty("virtual-test-environment.port"));
+	}
 
 }

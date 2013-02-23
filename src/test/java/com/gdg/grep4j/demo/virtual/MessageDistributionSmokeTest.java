@@ -1,12 +1,12 @@
-package com.gdg.grep4j.demo.remote;
+package com.gdg.grep4j.demo.virtual;
 
-import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer1;
-import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer2;
-import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer3;
-import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer4;
-import static com.gdg.grep4j.demo.profiles.RemoteProfiles.consumer5;
-import static com.gdg.grep4j.demo.profiles.RemoteProfiles.esb;
-import static com.gdg.grep4j.demo.profiles.RemoteProfiles.producer;
+import static com.gdg.grep4j.demo.profiles.VirtualProfiles.consumer1;
+import static com.gdg.grep4j.demo.profiles.VirtualProfiles.consumer2;
+import static com.gdg.grep4j.demo.profiles.VirtualProfiles.consumer3;
+import static com.gdg.grep4j.demo.profiles.VirtualProfiles.consumer4;
+import static com.gdg.grep4j.demo.profiles.VirtualProfiles.consumer5;
+import static com.gdg.grep4j.demo.profiles.VirtualProfiles.esb;
+import static com.gdg.grep4j.demo.profiles.VirtualProfiles.producer;
 import static org.grep4j.core.Grep4j.constantExpression;
 import static org.grep4j.core.Grep4j.grep;
 import static org.grep4j.core.Grep4j.regularExpression;
