@@ -6,10 +6,8 @@ import com.gdg.grep4j.demo.profiles.ConfLoader;
 
 public class RemoteProfiles {
 
-	private static final String URL = ConfLoader.getInstance()
-			.getTestUrl();
-	private static final int PORT = ConfLoader.getInstance()
-			.getTestPort();
+	private static final String URL = ConfLoader.getInstance().getTestUrl();
+	private static final int PORT = ConfLoader.getInstance().getTestPort();
 	private static final String USER = ConfLoader.getInstance()
 			.getTestEnvironmentUser();
 	private static final String PASSWORD = ConfLoader.getInstance()
@@ -28,41 +26,40 @@ public class RemoteProfiles {
 	private static Profile createProducerProfile() {
 		return createProfile("producer", LOG_ROOT + "/producer/server.log", URL);
 	}
-	
+
 	private static Profile createEsbProfile() {
 
-		return createProfile("esb",
-				LOG_ROOT + "/esb/server.log", URL);
+		return createProfile("esb", LOG_ROOT + "/esb/server.log", URL);
 	}
 
 	private static Profile createConsumer1Profile() {
 
-		return createProfile("consumer1",
-				LOG_ROOT + "/consumer1/server.log", URL);
+		return createProfile("consumer1", LOG_ROOT + "/consumer1/server.log",
+				URL);
 	}
 
 	private static Profile createConsumer2Profile() {
 
-		return createProfile("consumer2",
-				LOG_ROOT + "/consumer2/server.log", URL);
+		return createProfile("consumer2", LOG_ROOT + "/consumer2/server.log",
+				URL);
 	}
 
 	private static Profile createConsumer3Profile() {
 
-		return createProfile("consumer3",
-				LOG_ROOT + "/consumer3/server.log", URL);
+		return createProfile("consumer3", LOG_ROOT + "/consumer3/server.log",
+				URL);
 	}
 
 	private static Profile createConsumer4Profile() {
 
-		return createProfile("consumer4",
-				LOG_ROOT + "/consumer4/server.log", URL);
+		return createProfile("consumer4", LOG_ROOT + "/consumer4/server.log",
+				URL);
 	}
 
 	private static Profile createConsumer5Profile() {
 
-		return createProfile("consumer5",
-				LOG_ROOT + "/consumer5/server.log", URL);
+		return createProfile("consumer5", LOG_ROOT + "/consumer5/server.log",
+				URL);
 	}
 
 	private static Profile createProfile(String profileName,

@@ -22,6 +22,8 @@ import org.testng.annotations.Test;
 @Test
 public class MessageDistributionSmokeTest {
 
+	private final String ID_TO_CHECK = "1546366";
+
 	@BeforeTest
 	public void triggerMessageDispatcher() {
 		System.out
@@ -32,15 +34,17 @@ public class MessageDistributionSmokeTest {
 
 		assertThat(
 				executing(
-						grep(regularExpression("Sent(.*)CREATE(.*)1546366"),
-								on(producer))).totalLines(), is(1));
+						grep(regularExpression("Sent(.*)CREATE(.*)"
+								+ ID_TO_CHECK), on(producer))).totalLines(),
+				is(1));
 
 	}
 
 	public void testESBReceiveAndDispatchACREATEMessage() {
 
 		GrepResults globalEsbResult = grep(
-				regularExpression("EVENT,(.*)CREATE(.*)1546366"), on(esb));
+				regularExpression("EVENT,(.*)CREATE(.*)" + ID_TO_CHECK),
+				on(esb));
 
 		assertThat(globalEsbResult.filterBy(constantExpression("Received"))
 				.totalLines(), is(1));
@@ -54,7 +58,8 @@ public class MessageDistributionSmokeTest {
 
 		assertThat(
 				executing(grep(
-						regularExpression("Received(.*)EVENT,(.*)CREATE(.*)1546366"),
+						regularExpression("Received(.*)EVENT,(.*)CREATE(.*)"
+								+ ID_TO_CHECK),
 						on(consumer1, consumer2, consumer3, consumer4,
 								consumer5)).totalLines()), is(5));
 

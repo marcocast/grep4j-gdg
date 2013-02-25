@@ -19,7 +19,8 @@ public class TimeService {
 	public static long extractTime(String text) {
 		Matcher lm = timePattern.matcher(text);
 		if (lm.find()) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,SSS");
+			SimpleDateFormat sdf = new SimpleDateFormat(
+					"yyyy-MM-dd HH:mm:ss,SSS");
 			sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 
 			String inputString = lm.group();

@@ -10,7 +10,7 @@
 		<dependency>
 			<groupId>com.googlecode.grep4j</groupId>
 			<artifactId>grep4j</artifactId>
-			<version>1.7.5</version>
+			<version>1.7.6-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

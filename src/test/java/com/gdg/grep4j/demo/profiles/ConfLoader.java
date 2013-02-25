@@ -33,19 +33,19 @@ public class ConfLoader {
 	public String getTestEnvironmentPassword() {
 		return prop.getProperty("test-environment.password");
 	}
-	
+
 	public String getTestUrl() {
 		return prop.getProperty("test-environment.url");
 	}
-	
+
 	public int getTestPort() {
 		return Integer.valueOf(prop.getProperty("test-environment.port"));
 	}
-	
+
 	public String getTestLogRoot() {
 		return prop.getProperty("test-environment.logroot");
 	}
-	
+
 	public String getVirtualTestEnvironmentUser() {
 		return prop.getProperty("virtual-test-environment.user");
 	}
@@ -53,15 +53,16 @@ public class ConfLoader {
 	public String getVirtualTestEnvironmentPassword() {
 		return prop.getProperty("virtual-test-environment.password");
 	}
-	
+
 	public String getVirtualTestUrl() {
 		return prop.getProperty("virtual-test-environment.url");
 	}
-	
+
 	public int getVirtualTestPort() {
-		return Integer.valueOf(prop.getProperty("virtual-test-environment.port"));
+		return Integer.valueOf(prop
+				.getProperty("virtual-test-environment.port"));
 	}
-	
+
 	public String getVirtualTestLogRoot() {
 		return prop.getProperty("virtual-test-environment.logroot");
 	}
