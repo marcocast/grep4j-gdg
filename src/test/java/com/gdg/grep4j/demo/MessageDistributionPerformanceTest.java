@@ -1,4 +1,4 @@
-package com.gdg.grep4j.demo.local;
+package com.gdg.grep4j.demo;
 
 import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer1;
 import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer2;
@@ -48,7 +48,7 @@ public class MessageDistributionPerformanceTest {
 	}
 
 	public void testConsumer1Latency() {
-
+ 
 		long consumer1Time = extractTime(consumersResult.filterOnProfile(
 				consumer1).toString());
 		assertThat((consumer1Time - producerTime),

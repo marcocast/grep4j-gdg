@@ -1,4 +1,4 @@
-package com.gdg.grep4j.demo.local;
+package com.gdg.grep4j.demo;
 
 import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer1;
 import static com.gdg.grep4j.demo.profiles.LocalProfiles.consumer2;
@@ -14,7 +14,7 @@ import static org.grep4j.core.fluent.Dictionary.on;
 import static org.grep4j.core.fluent.Dictionary.with;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-
+ 
 import org.grep4j.core.result.GrepResults;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

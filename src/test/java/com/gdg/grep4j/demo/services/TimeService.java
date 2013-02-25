@@ -12,10 +12,6 @@ public class TimeService {
 	private static final Pattern timePattern = Pattern
 			.compile("([0-9][0-9][0-9][0-9])-([0-9][0-9])-([0-9][0-9]) ([0-9][0-9]|2[0-3]):([0-9][0-9]):([0-9][0-9]),([0-9][0-9][0-9])");
 
-	public static Long latency(long consumer1Time, long producerTime) {
-		return consumer1Time - producerTime;
-	}
-
 	public static long extractTime(String text) {
 		Matcher lm = timePattern.matcher(text);
 		if (lm.find()) {
