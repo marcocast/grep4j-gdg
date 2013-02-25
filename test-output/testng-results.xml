@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="4269" started-at="2013-02-25T22:21:58Z" finished-at="2013-02-25T22:22:02Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="4269" started-at="2013-02-25T22:21:58Z" finished-at="2013-02-25T22:22:02Z">
+      <class name="com.gdg.grep4j.demo.local.MessageDistributionSmokeTest">
+        <test-method status="PASS" signature="triggerMessageDispatcher()[pri:0, instance:com.gdg.grep4j.demo.local.MessageDistributionSmokeTest@1531c8c]" name="triggerMessageDispatcher" is-config="true" duration-ms="12" started-at="2013-02-25T22:21:58Z" finished-at="2013-02-25T22:21:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- triggerMessageDispatcher -->
+        <test-method status="PASS" signature="testConsumersReceivedACREATEMessage()[pri:0, instance:com.gdg.grep4j.demo.local.MessageDistributionSmokeTest@1531c8c]" name="testConsumersReceivedACREATEMessage" duration-ms="2619" started-at="2013-02-25T22:21:58Z" finished-at="2013-02-25T22:22:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testConsumersReceivedACREATEMessage -->
+        <test-method status="PASS" signature="testESBReceivedAndSentACREATEMessage()[pri:0, instance:com.gdg.grep4j.demo.local.MessageDistributionSmokeTest@1531c8c]" name="testESBReceivedAndSentACREATEMessage" duration-ms="811" started-at="2013-02-25T22:22:00Z" finished-at="2013-02-25T22:22:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testESBReceivedAndSentACREATEMessage -->
+        <test-method status="PASS" signature="testProducerSentACREATEMessage()[pri:0, instance:com.gdg.grep4j.demo.local.MessageDistributionSmokeTest@1531c8c]" name="testProducerSentACREATEMessage" duration-ms="807" started-at="2013-02-25T22:22:01Z" finished-at="2013-02-25T22:22:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProducerSentACREATEMessage -->
+      </class> <!-- com.gdg.grep4j.demo.local.MessageDistributionSmokeTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
