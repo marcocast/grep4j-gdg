@@ -4,21 +4,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class CredentialLoader {
+public class ConfLoader {
 	private final Properties prop;
 
 	private static class SingletonHolder {
-		public static final CredentialLoader INSTANCE = new CredentialLoader();
+		public static final ConfLoader INSTANCE = new ConfLoader();
 	}
 
-	public static CredentialLoader getInstance() {
+	public static ConfLoader getInstance() {
 		return SingletonHolder.INSTANCE;
 	}
 
-	private CredentialLoader() {
+	private ConfLoader() {
 		prop = new Properties();
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		InputStream stream = loader.getResourceAsStream("credentials.properties");
+		InputStream stream = loader.getResourceAsStream("conf.properties");
 		try {
 			prop.load(stream);
 		} catch (IOException e) {
@@ -42,6 +42,10 @@ public class CredentialLoader {
 		return Integer.valueOf(prop.getProperty("test-environment.port"));
 	}
 	
+	public String getTestLogRoot() {
+		return prop.getProperty("test-environment.logroot");
+	}
+	
 	public String getVirtualTestEnvironmentUser() {
 		return prop.getProperty("virtual-test-environment.user");
 	}
@@ -56,6 +60,10 @@ public class CredentialLoader {
 	
 	public int getVirtualTestPort() {
 		return Integer.valueOf(prop.getProperty("virtual-test-environment.port"));
+	}
+	
+	public String getVirtualTestLogRoot() {
+		return prop.getProperty("virtual-test-environment.logroot");
 	}
 
 }

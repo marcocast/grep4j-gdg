@@ -2,18 +2,20 @@ package com.gdg.grep4j.demo.profiles;
 
 import org.grep4j.core.model.Profile;
 import org.grep4j.core.model.ProfileBuilder;
-import com.gdg.grep4j.demo.profiles.CredentialLoader;
+import com.gdg.grep4j.demo.profiles.ConfLoader;
 
 public class VirtualProfiles {
 
-	private static final String URL = CredentialLoader.getInstance()
+	private static final String URL = ConfLoader.getInstance()
 			.getVirtualTestUrl();
-	private static final int PORT = CredentialLoader.getInstance()
+	private static final int PORT = ConfLoader.getInstance()
 			.getVirtualTestPort();
-	private static final String USER = CredentialLoader.getInstance()
+	private static final String USER = ConfLoader.getInstance()
 			.getVirtualTestEnvironmentUser();
-	private static final String PASSWORD = CredentialLoader.getInstance()
+	private static final String PASSWORD = ConfLoader.getInstance()
 			.getVirtualTestEnvironmentPassword();
+	private static final String LOG_ROOT = ConfLoader.getInstance()
+			.getVirtualTestLogRoot();
 
 	public static final Profile producer = createProducerProfile();
 	public static final Profile esb = createEsbProfile();
@@ -24,43 +26,43 @@ public class VirtualProfiles {
 	public static final Profile consumer5 = createConsumer5Profile();
 
 	private static Profile createProducerProfile() {
-		return createProfile("producer", "/home/user/gdg/resources/producer/server.log", URL);
+		return createProfile("producer", LOG_ROOT + "/producer/server.log", URL);
 	}
 
 	private static Profile createEsbProfile() {
 
 		return createProfile("esb",
-				"/home/user/gdg/resources/esb/server.log", URL);
+				LOG_ROOT + "/esb/server.log", URL);
 	}
 
 	private static Profile createConsumer1Profile() {
 
 		return createProfile("consumer1",
-				"/home/user/gdg/resources/consumer1/server.log", URL);
+				LOG_ROOT + "/consumer1/server.log", URL);
 	}
 
 	private static Profile createConsumer2Profile() {
 
 		return createProfile("consumer2",
-				"/home/user/gdg/resources/consumer2/server.log", URL);
+				LOG_ROOT + "/consumer2/server.log", URL);
 	}
 
 	private static Profile createConsumer3Profile() {
 
 		return createProfile("consumer3",
-				"/home/user/gdg/resources/consumer3/server.log", URL);
+				LOG_ROOT + "/consumer3/server.log", URL);
 	}
 
 	private static Profile createConsumer4Profile() {
 
 		return createProfile("consumer4",
-				"/home/user/gdg/resources/consumer4/server.log", URL);
+				LOG_ROOT + "/consumer4/server.log", URL);
 	}
 
 	private static Profile createConsumer5Profile() {
 
 		return createProfile("consumer5",
-				"/home/user/gdg/resources/consumer5/server.log", URL);
+				LOG_ROOT + "/consumer5/server.log", URL);
 	}
 
 	private static Profile createProfile(String profileName,
