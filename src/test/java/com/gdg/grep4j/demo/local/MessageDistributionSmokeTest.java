@@ -9,9 +9,9 @@ import static com.gdg.grep4j.demo.profiles.LocalProfiles.esb;
 import static com.gdg.grep4j.demo.profiles.LocalProfiles.producer;
 import static org.grep4j.core.Grep4j.constantExpression;
 import static org.grep4j.core.Grep4j.grep;
-import static org.grep4j.core.Grep4j.regularExpression;
-import static org.grep4j.core.fluent.Dictionary.on;
 import static org.grep4j.core.fluent.Dictionary.executing;
+import static org.grep4j.core.fluent.Dictionary.on;
+import static org.grep4j.core.fluent.Dictionary.with;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -22,46 +22,61 @@ import org.testng.annotations.Test;
 @Test
 public class MessageDistributionSmokeTest {
 
-	private final String ID_TO_CHECK = "1546366";
-
 	@BeforeTest
 	public void triggerMessageDispatcher() {
 		System.out
-				.println("Producing and firing a CREATE message to downstream systems with message id 1546366");
+				.println("Producing and firing a Message(1546366) to downstream systems");
 	}
 
-	public void testProducerDispatchACREATEMessage() {
-
+	public void testProducerSentACREATEMessage() {
+		
+		/*
+		 * I expect to have 1 message sent to the ESB
+		 */
 		assertThat(
 				executing(
-						grep(regularExpression("Sent(.*)CREATE(.*)"
-								+ ID_TO_CHECK), on(producer))).totalLines(),
-				is(1));
+						grep(
+							with(constantExpression("Message(1546366) Sent Successfully")), 
+								on(producer))).
+								totalLines(),is(1));
 
 	}
 
-	public void testESBReceiveAndDispatchACREATEMessage() {
-
+	public void testESBReceivedAndSentACREATEMessage() {
+		
+		/*
+		 * Remote ssh connection only one time.
+		 */
 		GrepResults globalEsbResult = grep(
-				regularExpression("EVENT,(.*)CREATE(.*)" + ID_TO_CHECK),
-				on(esb));
-
+				constantExpression("Message(1546366)"), on(esb));
+		
+		/*
+		 * Post grep filtering: Only interested in the "Received" message
+		 * I expect to have 1 message received by the ESB 
+		 */
 		assertThat(globalEsbResult.filterBy(constantExpression("Received"))
 				.totalLines(), is(1));
 
+		/*
+		 * Post grep filtering: Only interested in the "Sent" messages
+		 * I expect to have 1 message sent to the each of the 5 consumers 
+		 */
 		assertThat(globalEsbResult.filterBy(constantExpression("Sent"))
 				.totalLines(), is(5));
 
 	}
 
-	public void testConsumersReceiveACREATEMessage() {
-
+	public void testConsumersReceivedACREATEMessage() {
+		
+		/*
+		 * I expect to see 1 message received for each of the 5 consumers
+		 */
 		assertThat(
-				executing(grep(
-						regularExpression("Received(.*)EVENT,(.*)CREATE(.*)"
-								+ ID_TO_CHECK),
-						on(consumer1, consumer2, consumer3, consumer4,
-								consumer5)).totalLines()), is(5));
+				executing(
+						grep(
+							with(constantExpression("Message(1546366) Received")),
+								on(consumer1, consumer2, consumer3, consumer4, consumer5)).
+									totalLines()), is(5));
 
 	}
 

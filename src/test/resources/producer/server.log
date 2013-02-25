@@ -4,7 +4,7 @@
 2013-02-19 10:09:05,707 INFO  [org.grep4j.demo.core.sender.game.GameSender] (pool-19-thread-8) GREP4J-DEMO:->Selection:Added:EvId(1546366)MktId(21980631)SelId(138571904)
 2013-02-19 10:09:05,707 INFO  [org.grep4j.demo.core.sender.game.GameSender] (pool-19-thread-8) GREP4J-DEMO:->Selection:Added:EvId(1546366)MktId(21980631)SelId(138571905)
 2013-02-19 10:09:05,795 INFO  [org.grep4j.demo.input.core.InputCoreMessageSender] (pool-19-thread-9) Input::MessageSender::Prevalidate::PacketId(0)::State(NORMAL)::Dest({CONSUMER1, 4}, {CONSUMER2, 3}, {CONSUMER3, 5}, {CONSUMER4, 1}, {CONSUMER5, 8}, {CONSUMER6, 6}, {CONSUMER7, 2}, {CONSUMER8, 7})::DataLevel(EVENT, 7)::Op(CREATE, C)::GlobalId(1546366)::Priority(1)::Src(GUI, 1)
-2013-02-19 10:09:05,795 INFO  [org.grep4j.demo.input.core.InputCoreMessageSender] (pool-19-thread-9) Input::MessageSender::Sent::PacketId(982336426)::State(NORMAL)::Dest({CONSUMER1, 4}, {CONSUMER2, 3}, {CONSUMER3, 5}, {CONSUMER4, 1}, {CONSUMER5, 8}, {CONSUMER6, 6}, {CONSUMER7, 2}, {CONSUMER8, 7})::DataLevel(EVENT, 7)::Op(CREATE, C)::GlobalId(1546366)::Priority(1)::Src(GUI, 1)
+2013-02-19 10:09:05,795 INFO  [org.grep4j.demo.input.core.InputCoreMessageSender] (pool-19-thread-9) Input::MessageSender::Message(1546366) Sent Successfully
 2013-02-19 10:09:05,795 INFO  [org.grep4j.demo.core.sender.game.GameSender] (pool-19-thread-9) GREP4J-DEMO:->Event:Sent:EvId(1546366)
 2013-02-19 10:09:05,796 INFO  [org.grep4j.demo.core.sender.game.GameSender] (pool-19-thread-9) GREP4J-DEMO:->Market:Sent:EvId(1546366)MktId(21980506)
 2013-02-19 10:09:05,796 INFO  [org.grep4j.demo.core.sender.game.GameSender] (pool-19-thread-9) GREP4J-DEMO:->Market:Sent:EvId(1546366)MktId(21980507)
