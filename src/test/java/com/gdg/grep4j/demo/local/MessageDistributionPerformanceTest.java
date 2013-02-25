@@ -25,7 +25,7 @@ public class MessageDistributionPerformanceTest {
 
 	private final String ID_TO_CHECK = "1546366";
 
-	private static final long MAX_ACCETABLE_LATENCY = 500l;
+	private static final long MAX_ACCETABLE_LATENCY = 400l;
 
 	private long producerTime = 0;
 
