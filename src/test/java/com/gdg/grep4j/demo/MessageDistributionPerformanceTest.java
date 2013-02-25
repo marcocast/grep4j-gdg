@@ -22,11 +22,11 @@ import org.testng.annotations.Test;
 public class MessageDistributionPerformanceTest {
 
 
-	private static final long MAX_ACCETABLE_LATENCY = 400l;
+	private static final long MAX_ACCETABLE_LATENCY = 400L;
 
 	private long producerTime = 0;
 
-	private GrepResults consumersResult;
+	private GrepResults consumersResults;
 	
 	@BeforeTest
 	public void triggerMessageDispatcher() {
@@ -41,24 +41,26 @@ public class MessageDistributionPerformanceTest {
 				constantExpression("Message(1546366) Sent Successfully"),
 				on(producer));
 		producerTime = extractTime(producerResult.toString());
-
-		consumersResult = grep(
+	}
+	
+	@BeforeTest
+	public void grepConsumerLogs() {
+				
+		consumersResults = grep(
 				constantExpression("Message(1546366) Received"),
 				on(consumer1, consumer2, consumer3, consumer4, consumer5));
 	}
 
 	public void testConsumer1Latency() {
  
-		long consumer1Time = extractTime(consumersResult.filterOnProfile(
-				consumer1).toString());
+		long consumer1Time = extractTime(consumersResults.filterOnProfile(consumer1).toString());
 		assertThat((consumer1Time - producerTime),
 				is(lessThan(MAX_ACCETABLE_LATENCY)));
 	}
 
 	public void testConsumer2Latency() {
 
-		long consumer2Time = extractTime(consumersResult.filterOnProfile(
-				consumer2).toString());
+		long consumer2Time = extractTime(consumersResults.filterOnProfile(consumer2).toString());
 		assertThat((consumer2Time - producerTime),
 				is(lessThan(MAX_ACCETABLE_LATENCY)));
 
@@ -66,8 +68,7 @@ public class MessageDistributionPerformanceTest {
 
 	public void testConsumer3Latency() {
 
-		long consumer3Time = extractTime(consumersResult.filterOnProfile(
-				consumer3).toString());
+		long consumer3Time = extractTime(consumersResults.filterOnProfile(consumer3).toString());
 		assertThat((consumer3Time - producerTime),
 				is(lessThan(MAX_ACCETABLE_LATENCY)));
 
@@ -75,8 +76,7 @@ public class MessageDistributionPerformanceTest {
 
 	public void testConsumer4Latency() {
 
-		long consumer4Time = extractTime(consumersResult.filterOnProfile(
-				consumer4).toString());
+		long consumer4Time = extractTime(consumersResults.filterOnProfile(consumer4).toString());
 		assertThat((consumer4Time - producerTime),
 				is(lessThan(MAX_ACCETABLE_LATENCY)));
 
@@ -84,8 +84,7 @@ public class MessageDistributionPerformanceTest {
 
 	public void testConsumer5Latency() {
 
-		long consumer5Time = extractTime(consumersResult.filterOnProfile(
-				consumer5).toString());
+		long consumer5Time = extractTime(consumersResults.filterOnProfile(consumer5).toString());
 		assertThat((consumer5Time - producerTime),
 				is(lessThan(MAX_ACCETABLE_LATENCY)));
 	}

@@ -3,12 +3,17 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.gdg.grep4j.demo.local.MessageDistributionSmokeTest">
+      <class name="com.gdg.grep4j.demo.MessageDistributionPerformanceTest">
         <methods>
+          <include name="grepConsumerLogs"/>
+          <include name="testConsumer5Latency"/>
+          <include name="extractProducerTime"/>
+          <include name="testConsumer1Latency"/>
           <include name="triggerMessageDispatcher"/>
-          <include name="testConsumersReceivedACREATEMessage"/>
+          <include name="testConsumer3Latency"/>
+          <include name="testConsumer2Latency"/>
         </methods>
-      </class> <!-- com.gdg.grep4j.demo.local.MessageDistributionSmokeTest -->
+      </class> <!-- com.gdg.grep4j.demo.MessageDistributionPerformanceTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
